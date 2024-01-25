@@ -1,0 +1,21 @@
+/* start section*/
+main section {
+    direction: rtl;
+}
+section .container h3 {
+    max-width: 370px;
+    }
+    
+    /* end section*/
+
+      /*  start contact */
+      form , #touch{ 
+          flex: 1;
+      }
+      @media  (max-width: 992px) {
+          #flex {
+              flex-direction: column;
+          }
+      }
+      
+      /*end contact */
