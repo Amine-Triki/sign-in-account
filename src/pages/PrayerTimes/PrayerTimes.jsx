@@ -7,9 +7,9 @@ import Form from 'react-bootstrap/Form';
 
 import fajr from "/src/assets/fajr-prayer.webp"
 import dhhr from "/src/assets/dhhr-prayer-mosque.webp"
-/* import asr from "/src/assets/asr-prayer-mosque.webp"
+import asr from "/src/assets/asr-prayer-mosque.webp"
 import sunset from "/src/assets/sunset-prayer-mosque.webp"
-import night from "/src/assets/night-prayer-mosque.webp" */
+import night from "/src/assets/night-prayer-mosque.webp" 
 
 
 const PrayerTimes = () => {
@@ -100,9 +100,9 @@ const PrayerTimes = () => {
       <div className='d-flex gap-5 flex-wrap justify-content-center' >
         <CardPrayer title='الصبح' img={fajr}  alt='الصبح' timeP={timings.Fajr} />
         <CardPrayer title='الظهر' img={dhhr}  alt='الظهر'  timeP={timings.Dhuhr}/>
-        <CardPrayer title='عصر' img='/src/assets/asr-prayer-mosque.webp'  alt='عصر' timeP={timings.Asr}/>
-        <CardPrayer title='المغرب' img='/src/assets/sunset-prayer-mosque.webp'  alt='المغرب' timeP={timings.Sunset}/>
-        <CardPrayer title='العشاء' img='/src/assets/night-prayer-mosque.webp'  alt='العشاء' timeP={timings.Isha} />
+        <CardPrayer title='عصر' img={asr}  alt='عصر' timeP={timings.Asr}/>
+        <CardPrayer title='المغرب' img={sunset}  alt='المغرب' timeP={timings.Sunset}/>
+        <CardPrayer title='العشاء' img={night}  alt='العشاء' timeP={timings.Isha} />
       </div>
       
       
