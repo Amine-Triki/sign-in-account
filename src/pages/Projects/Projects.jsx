@@ -22,7 +22,7 @@ const Projects = () => {
         <div className="main-title mt-5 mb-5 position-relative">
                 <h2>مشاريعي</h2>
                 <p>ماذا صنعت</p>
-            </div>
+        </div>
           <ul className="switcher bg-warning text-white d-flex flex-row py-3 justify-content-around px-0 flex-wrap sm:flex-column">
             <li
               className={activeCategory === 'all' ? 'active' : ''}
@@ -64,7 +64,7 @@ const Projects = () => {
                     <div className="card" style={{ width: '18rem' }}>
                       <img src={project.imageSrc} className="card-img-top" alt={project.title} />
                       <div className="card-body">
-                        <h5 className="card-title text-info">{project.title}</h5>
+                        <h5 className="card-title text-info " style={{fontSize: '1.1rem'}}>{project.title}</h5>
                         <p className="card-text">{project.description}</p>
                         <a href={project.link} className="btn" rel="noreferrer" target="_blank" style={{ backgroundColor: '#BFECFF' }}>
                         زيارة

@@ -1,3 +1,4 @@
+import Img12 from "/src/assets/12.webp"
 import Img11 from "/src/assets/11.webp"
 import Img10 from "/src/assets/10.webp"
 import Img9 from "/src/assets/9.webp"
@@ -9,6 +10,13 @@ import Img4 from "/src/assets/4.webp"
 import Img3 from "/src/assets/3.webp"
 
 const projects = [
+    {
+      category: 'React',
+      title: ' موقع سمع القرآن  مع أوقات الصلاة',
+      description: 'vite React + BOOTSTRAP + PWA',
+      link: 'https://quran-ar-amine-trikis-projects.vercel.app/',
+      imageSrc: Img12,
+    },
     {
       category: 'React',
       title: 'موقع القرآن الكريم',
