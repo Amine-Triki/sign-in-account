@@ -34,6 +34,12 @@ const Header = ({ pageColor }) => {
                 <li className="nav-item ">
                   <Link to="/contact" className="nav-link  p-3 p-lg-4">تواصل معي</Link>
                 </li>
+                <li className="nav-item ">
+                  <Link to="/sign-in" className="nav-link  p-3 p-lg-4"> تسجيل الدخول</Link>
+                </li>
+                <li className="nav-item ">
+                  <Link to="/sign-up" className="nav-link  p-3 p-lg-4"> سجل</Link>
+                </li>
               </ul>
             
             </div>
