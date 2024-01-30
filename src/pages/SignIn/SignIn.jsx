@@ -1,18 +1,36 @@
 import './SignIn.css'
 import { Helmet } from 'react-helmet-async';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const SignIn = () => {
   return (
     <main>
-    <Helmet>
-    <title> تسجيل الدخول  </title>
-    <link rel="icon"  type="image/png" href="../../assets/logo.webp"></link>
-  </Helmet>
-  <div className="container">
+      <Helmet>
+        <title> تسجيل الدخول  </title>
+        <link rel="icon"  type="image/png" href="../../assets/logo.webp"></link>
+      </Helmet>
+  
+      <div className='container sign d-flex  flex-column justify-content-center align-items-center flex-wrap'>
+        <p>تسجيل الدخول : </p>
+        <div>
+          <Form className="  d-flex align-items-center justify-content-center flex-column ">
+              
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label>البريد الالكتروني</Form.Label>
+                <Form.Control type="email" placeholder="البريد الالكتروني" />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>كلمة السر</Form.Label>
+                <Form.Control type="password" placeholder="كلمة السر" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                ارسل
+              </Button>
+            </Form>
+        </div>
+      </div>
 
-  تسجيل الدخول
-
-  </div>
 
 
 
