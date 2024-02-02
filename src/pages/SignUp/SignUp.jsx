@@ -13,7 +13,7 @@ const SignUp = () => {
       <div className='container sign d-flex  flex-column justify-content-center align-items-center flex-wrap'>
         <p>لانشاء حساب الرجاء قم بملئ الابيانات التالية : </p>
         <div>
-          <Form className="  d-flex align-items-center justify-content-center flex-column ">
+          <Form className=" container d-flex align-items-center justify-content-center flex-column ">
               <Form.Group className="mb-3" controlId="formBasictext">
                 <Form.Label> الاسم</Form.Label>
                 <Form.Control type="text" placeholder="الاسم "/>
@@ -26,7 +26,7 @@ const SignUp = () => {
                 <Form.Label>كلمة السر</Form.Label>
                 <Form.Control type="password" placeholder="كلمة السر" />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary mt-3" type="submit">
                 ارسل
               </Button>
             </Form>

@@ -16,7 +16,7 @@ function About() {
         <title>من أنا</title>
         <link rel="icon"  type="image/png" href="../../assets/logo.webp"></link>
       </Helmet>
-      <section className="landing ">
+      <section className="landing container ">
         <div className="container  d-flex justify-content-center align-items-center flex-wrap align-content-between">
           <div>
             <h2 className="pt-3">مرحبا , أنا أمين التريكي</h2>
@@ -37,7 +37,7 @@ function About() {
             >
               تحميل السيرة الذاتية
             </a>
-            <div className="mt-4 ">
+            <div className="mt-4 container">
               <a
                 href="https://github.com/Amine-Triki"
                 target="_blank"

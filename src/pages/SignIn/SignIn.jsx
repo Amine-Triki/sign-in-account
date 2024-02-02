@@ -2,6 +2,7 @@ import './SignIn.css'
 import { Helmet } from 'react-helmet-async';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -14,7 +15,7 @@ const SignIn = () => {
       <div className='container sign d-flex  flex-column justify-content-center align-items-center flex-wrap'>
         <p>تسجيل الدخول : </p>
         <div>
-          <Form className="  d-flex align-items-center justify-content-center flex-column ">
+          <Form className="container  d-flex align-items-center justify-content-center flex-column ">
               
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>البريد الالكتروني</Form.Label>
@@ -24,7 +25,9 @@ const SignIn = () => {
                 <Form.Label>كلمة السر</Form.Label>
                 <Form.Control type="password" placeholder="كلمة السر" />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <p> </p>
+              <p> ليس لديك حساب  قم بانشاء حساب من     <Link to="/sign-up" > هنا</Link> </p>
+              <Button variant="primary mt-2" type="submit">
                 ارسل
               </Button>
             </Form>
