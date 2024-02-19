@@ -19,17 +19,17 @@ const SignIn = () => {
               
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>البريد الالكتروني</Form.Label>
-                <Form.Control type="email" placeholder="البريد الالكتروني" />
+                <Form.Control type="email" required placeholder="البريد الالكتروني" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label>كلمة السر</Form.Label>
-                <Form.Control type="password" placeholder="كلمة السر" />
+                <Form.Control type="password" required placeholder="كلمة السر" />
               </Form.Group>
-              <p> </p>
-              <p> ليس لديك حساب  قم بانشاء حساب من     <Link to="/sign-up" > هنا</Link> </p>
-              <Button variant="primary mt-2" type="submit">
+              
+              <Button variant="primary mt-3"  type="submit">
                 ارسل
               </Button>
+              <p className='mt-3'> ليس لديك حساب  قم بانشاء حساب من     <Link to="/sign-up" > هنا</Link> </p>
             </Form>
         </div>
       </div>
