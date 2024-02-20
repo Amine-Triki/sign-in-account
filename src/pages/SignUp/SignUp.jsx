@@ -6,11 +6,15 @@ import { useState } from 'react'
 
 import { auth } from '../../firebase/config'
 import {  createUserWithEmailAndPassword } from "firebase/auth";
+
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
 
 const [name , setName] =useState("")
 const [email , setEmail] =useState("")
 const [password , setPassword] =useState("")
+
+const navigate = useNavigate();
 
 
 
@@ -55,6 +59,7 @@ const [password , setPassword] =useState("")
                   // Signed up 
                   const user = userCredential.user;
                   // ...
+                  navigate("/");
                 })
                 .catch((error) => {
                   const errorCode = error.code;
