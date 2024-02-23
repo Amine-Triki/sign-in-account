@@ -53,7 +53,7 @@ const Contact = () => {
                 <RiMailLine />
                   <div  className="head me-1">
                       <span><b>البريد الإلكتروني :</b></span>
-                      <span>Contact@aminetriki.com.tn</span>
+                      <span>amine.triki@live.com</span>
                   </div>
               </div>
             </div>
