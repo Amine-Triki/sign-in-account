@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle' 
 
 import { Header , Footer  , Colors} from './components/index'
-import { Quran , PrayerTimes , About , Projects , Contact , SignIn , SignUp} from './pages/index'
+import { Quran , PrayerTimes , About , Projects , Contact , SignIn , SignUp , Profile} from './pages/index'
 
 function App() {
   const [pageColor, setPageColor] =  useState(localStorage.getItem('pageColor') || '');
@@ -35,6 +35,7 @@ function App() {
           <Route path='/projects' element ={<Projects/>} />
           <Route path='/sign-in' element ={<SignIn/>} />
           <Route path='/sign-up' element ={<SignUp/>} />
+          <Route path='/Profile' element ={<Profile/>} />
         
         </Routes>
         </div>

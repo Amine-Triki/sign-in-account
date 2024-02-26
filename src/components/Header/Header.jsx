@@ -69,6 +69,9 @@ const Header = ({ pageColor }) => {
             <div className="collapse navbar-collapse" id="main">
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0 ps-3">
                 <li className="nav-item ">
+                  <Link  to="/Profile" className="nav-link   p-3 p-lg-4">الملف الشخصي</Link>
+                </li>
+                <li className="nav-item ">
                   <Link  to="/" className="nav-link   p-3 p-lg-4">القرآن الكريم</Link>
                 </li>
                 <li className="nav-item ">

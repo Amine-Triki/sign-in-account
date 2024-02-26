@@ -76,11 +76,6 @@ const SignIn = () => {
                       setFirebaseError('تثبت من بريدك و كلمت المرور')
                   }
 
-
-
-
-                  
-
                 });
 
               }} variant="primary mt-3"  type="submit">
@@ -91,9 +86,6 @@ const SignIn = () => {
             </Form>
         </div>
       </div>
-
-
-
 
 
     </main>
