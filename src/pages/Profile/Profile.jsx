@@ -9,6 +9,11 @@ import { useNavigate } from "react-router-dom";
 
 // import Moment from "react-moment";
 
+import moment from 'moment';
+import 'moment/locale/ar-tn';
+
+moment.locale('ar-tn');
+
 const Profile = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
@@ -17,12 +22,18 @@ const Profile = () => {
     if (!user && !loading) {
       navigate("/");
     }
+
+    if(user){
+      if (!user.emailVerified) {
+        navigate("/");
+      }
+    }
   });
 
   if (loading) {
     return (
       <div>
-        <p className=" profilecontainer sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
+        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
           
           في طور التحميل
         </p>
@@ -32,7 +43,7 @@ const Profile = () => {
   if (error) {
     return (
       <div>
-        <p className=" profilecontainer sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
+        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
           خطأ في التحميل {error}
         </p>
       </div>
@@ -54,10 +65,10 @@ const Profile = () => {
           <p className="profile">اسم المستخدم : {user.displayName} </p>
           <p className="profile">البريد الالكتروني : {user.email} </p>
           <p className="profile">
-            آخر مرة قمت بتجسيل الدخول : {user.metadata.lastSignInTime}
+            آخر مرة قمت بتجسيل الدخول : {moment(user.metadata.lastSignInTime).fromNow()}
           </p>
           <p className="profile">
-            تاريخ إنشاء الحساب : {user.metadata.creationTime}
+            تاريخ إنشاء الحساب : {moment(user.metadata.creationTime).fromNow()}
           </p>
         </div>
       </main>

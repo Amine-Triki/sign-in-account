@@ -20,10 +20,16 @@ const PrayerTimes = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !loading) {
       navigate("/");
     }
-  }, [user]);
+
+    if(user){
+      if (!user.emailVerified) {
+        navigate("/");
+      }
+    }
+  } );
 
   const [timings, setTimings] = useState({
     Fajr: "04:20",
@@ -90,53 +96,88 @@ const PrayerTimes = () => {
     getTimings();
   }, [selectedCity]);
 
-  return (
-    <main className="d-flex justify-content-center align-items-center flex-column gap-4">
-      <Helmet>
-        <title> أوقات الصلاة </title>
-        <link rel="icon" type="image/png" href="../../assets/logo.webp"></link>
-      </Helmet>
-      <Time />
-      <p className="display-6 d-flex align-items-center flex-column ">
-        {hijriDate}
-      </p>
-      <h2>{selectedCity.displayName}</h2>
-      <div className="d-flex gap-5 flex-wrap justify-content-center">
-        <CardPrayer title="الصبح" img={fajr} alt="الصبح" timeP={timings.Fajr} />
-        <CardPrayer
-          title="الظهر"
-          img={dhhr}
-          alt="الظهر"
-          timeP={timings.Dhuhr}
-        />
-        <CardPrayer title="عصر" img={asr} alt="عصر" timeP={timings.Asr} />
-        <CardPrayer
-          title="المغرب"
-          img={sunset}
-          alt="المغرب"
-          timeP={timings.Sunset}
-        />
-        <CardPrayer
-          title="العشاء"
-          img={night}
-          alt="العشاء"
-          timeP={timings.Isha}
-        />
+  if (loading) {
+    return (
+      <div>
+        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
+          في طور التحميل
+        </p>
       </div>
+    );
+  }
 
-      <Form.Select
-        onChange={handleCityChange}
-        className="formSize mt-4"
-        aria-label="Default select example"
-      >
-        {avilableCities.map((city) => (
-          <option key={city.id} value={city.apiName}>
-            {city.displayName}
-          </option>
-        ))}
-      </Form.Select>
-    </main>
-  );
+  if (user){
+    if(user.emailVerified){
+      return (
+        <main className="d-flex justify-content-center align-items-center flex-column gap-4">
+          <Helmet>
+            <title> أوقات الصلاة </title>
+            <link rel="icon" type="image/png" href="../../assets/logo.webp"></link>
+          </Helmet>
+          <Time />
+          <p className="display-6 d-flex align-items-center flex-column ">
+            {hijriDate}
+          </p>
+          <h2>{selectedCity.displayName}</h2>
+          <div className="d-flex gap-5 flex-wrap justify-content-center">
+            <CardPrayer title="الصبح" img={fajr} alt="الصبح" timeP={timings.Fajr} />
+            <CardPrayer
+              title="الظهر"
+              img={dhhr}
+              alt="الظهر"
+              timeP={timings.Dhuhr}
+            />
+            <CardPrayer title="عصر" img={asr} alt="عصر" timeP={timings.Asr} />
+            <CardPrayer
+              title="المغرب"
+              img={sunset}
+              alt="المغرب"
+              timeP={timings.Sunset}
+            />
+            <CardPrayer
+              title="العشاء"
+              img={night}
+              alt="العشاء"
+              timeP={timings.Isha}
+            />
+          </div>
+    
+          <Form.Select
+            onChange={handleCityChange}
+            className="formSize mt-4"
+            aria-label="Default select example"
+          >
+            {avilableCities.map((city) => (
+              <option key={city.id} value={city.apiName}>
+                {city.displayName}
+              </option>
+            ))}
+          </Form.Select>
+        </main>
+      );
+    }
+
+   
+
+
+
+  }
+
+
+
+
+  
+
+  if (error) {
+    return (
+      <div>
+        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
+          خطأ في التحميل {error}
+        </p>
+      </div>
+    );
+  }
+  
 };
 
 export default PrayerTimes;
