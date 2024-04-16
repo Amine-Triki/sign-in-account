@@ -78,13 +78,13 @@ const Profile = () => {
               // User deleted.
             }).catch((error) => {
               // An error ocurred
-              // ...
+              
             });
           }} >حذف الحساب </button>
         </div>
       </main>
     );
   }
-};
+};  
 
 export default Profile;
