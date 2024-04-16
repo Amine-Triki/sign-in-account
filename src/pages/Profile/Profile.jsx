@@ -7,6 +7,9 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 
+
+import {  deleteUser } from "firebase/auth";
+
 // import Moment from "react-moment";
 
 import moment from 'moment';
@@ -70,6 +73,14 @@ const Profile = () => {
           <p className="profile">
             تاريخ إنشاء الحساب : {moment(user.metadata.creationTime).fromNow()}
           </p>
+          <button className="deleteAcc my-3 py-2 px-3" onClick={() => {
+            deleteUser(user).then(() => {
+              // User deleted.
+            }).catch((error) => {
+              // An error ocurred
+              // ...
+            });
+          }} >حذف الحساب </button>
         </div>
       </main>
     );

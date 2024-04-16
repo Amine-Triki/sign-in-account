@@ -1,0 +1,47 @@
+.popUp{
+    width: 370px ;
+    min-height: 440px;
+    background-color: #e7e7e7;
+    border-radius: 5%;
+    position:fixed;
+    
+    scale: 0;
+    transform: translateY(-100vh);
+    transition: 0.5s ;
+}
+
+
+.showForm{
+scale: 1;
+transform: translateY(0);
+}
+
+.closePopUp{
+    font-size: 30px;
+    position: absolute;
+    top: -20px;
+    right: -10px;
+}
+.closePopUp:hover{
+    color: red;
+    transform: rotate(360deg);
+    transition: 0.3s;
+}
+.check-mail{
+    margin: 15px 0;
+    font-size: 18px;
+    color: black;
+    line-height:20px;
+    text-align: center;
+}
+
+.forgetPass{
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: normal;
+}
+.forgetPass:hover{
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+}

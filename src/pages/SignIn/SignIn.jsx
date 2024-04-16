@@ -4,18 +4,23 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from "react-router-dom";
 import { useState } from 'react'
+import './popForm.css'
+import { RiCloseCircleLine } from "react-icons/ri";
 
 import { auth } from '../../firebase/config'
-import {  signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword , sendPasswordResetEmail } from "firebase/auth";
 
 import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
 
   const [email , setEmail] =useState("")
+  const [resetpass , setResetpass] =useState("")
   const [password , setPassword] =useState("")
   const [hasError , setHasError] =useState(false)
   const [firebaseError , setFirebaseError] =useState("")
+  const [showSendEmail , setShowSendEmail] =useState(false)
+  const [shwoform , setShwoform] =useState("")
   
   const navigate = useNavigate();
 
@@ -26,10 +31,50 @@ const SignIn = () => {
         <link rel="icon"  type="image/png" href="../../assets/logo.webp"></link>
       </Helmet>
   
+
       <div className='container sign d-flex  flex-column justify-content-center align-items-center flex-wrap'>
+
+      <Form className={`popUp container  d-flex align-items-center justify-content-center flex-column ${shwoform}`}>
+              <div className='closePopUp' onClick={() => {
+                setShwoform("");
+              }} >
+                <RiCloseCircleLine /></div>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className='text-dark'>البريد الالكتروني</Form.Label>
+                <Form.Control onChange={(e) => {
+                  setResetpass(e.target.value)
+                }} type="email" required placeholder="البريد الالكتروني" />
+              </Form.Group>
+              
+              
+              <Button onClick={(e) => {
+                e.preventDefault();
+               
+
+                sendPasswordResetEmail(auth, resetpass)
+                 .then(() => {
+                  setShowSendEmail(true)
+                    
+                  })
+                  .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                  });
+                
+              }} variant="primary mt-3"  type="submit">
+               إعادة تعيين كلمة المرور
+              </Button>
+              { showSendEmail && <p className='check-mail'>الرجاء التثبت من البريد الالكتروني لإعادة تعيين كلمة المرور</p>}
+              
+          </Form>
+
+
+
         <p>تسجيل الدخول : </p>
         <div>
-          <Form className="container  d-flex align-items-center justify-content-center flex-column ">
+          
+            <Form className="container  d-flex align-items-center justify-content-center flex-column ">
               
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>البريد الالكتروني</Form.Label>
@@ -83,7 +128,10 @@ const SignIn = () => {
               </Button>
               <p className='mt-3'> ليس لديك حساب  قم بانشاء حساب من     <Link to="/sign-up" > هنا</Link> </p>
               <p className='mt-3'><b>{ hasError &&  firebaseError}  </b> </p>
-            </Form>
+              <p className='forgetPass' onClick={() => {
+                setShwoform("showForm")
+              }}>هل نسيت كلمة المرور ؟</p>
+          </Form>
         </div>
       </div>
 

@@ -8,3 +8,11 @@
 p{
     margin-bottom: 0px ;
 }
+
+
+.deleteAcc{
+    
+    border-radius: 8%;
+    background-color: #ff0000;
+    width: fit-content !important;
+}
