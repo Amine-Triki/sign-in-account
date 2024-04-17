@@ -1,6 +1,6 @@
 import "./PrayerTimes.css";
 import { Helmet } from "react-helmet-async";
-import { Time, CardPrayer } from "../../components/index";
+import { Time, CardPrayer , Loading } from "../../components/index";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
@@ -14,6 +14,8 @@ import night from "/src/assets/night-prayer-mosque.webp";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
+
+import {  Error404 } from '../index' 
 
 const PrayerTimes = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -98,13 +100,12 @@ const PrayerTimes = () => {
 
   if (loading) {
     return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          في طور التحميل
-        </p>
-      </div>
-    );
-  }
+      <main className='d-flex align-items-center justify-content-center '>
+       <Loading />
+      </main>
+  )
+       
+           }
 
   if (user){
     if(user.emailVerified){
@@ -170,11 +171,7 @@ const PrayerTimes = () => {
 
   if (error) {
     return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          خطأ في التحميل {error}
-        </p>
-      </div>
+      <Error404/>
     );
   }
   

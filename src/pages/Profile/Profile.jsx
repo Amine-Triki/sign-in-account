@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 
 import {  deleteUser } from "firebase/auth";
+import {   Loading } from '../../components/index'
+import {  Error404 } from '../index' 
 
 // import Moment from "react-moment";
 
@@ -35,23 +37,19 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          
-          في طور التحميل
-        </p>
-      </div>
-    );
-  }
-  if (error) {
-    return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          خطأ في التحميل {error}
-        </p>
-      </div>
-    );
-  }
+      <main className='d-flex align-items-center justify-content-center '>
+       <Loading />
+      </main>
+  )
+       
+           }
+
+
+           if (error) {
+            return (
+              <Error404/>
+            );
+          }
 
   if (user) {
     return (
@@ -78,7 +76,7 @@ const Profile = () => {
               // User deleted.
             }).catch((error) => {
               // An error ocurred
-              
+              console.log(error);
             });
           }} >حذف الحساب </button>
         </div>

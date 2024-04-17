@@ -2,12 +2,12 @@ import './Quran.css'
 import { Helmet } from 'react-helmet-async';
 import Button from "react-bootstrap/Button";
 
-import {  QuranLive , QuranLecture } from '../../components/index'
+import {  QuranLive , QuranLecture , Loading } from '../../components/index'
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/config'
 import {  sendEmailVerification } from "firebase/auth";
-
+import {  Error404 } from '../index' 
 
 const Quran = () => {
 const [user, loading, error] = useAuthState(auth);
@@ -16,13 +16,13 @@ const [user, loading, error] = useAuthState(auth);
 
   if (loading) {
     return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          في طور التحميل
-        </p>
-      </div>
-    );
-  }
+      <main className='d-flex align-items-center justify-content-center '>
+       <Loading />
+      </main>
+  )
+       
+           }
+
   if (!user) {
     return (
       <main className='d-flex align-items-center justify-content-center '>
@@ -91,11 +91,7 @@ if(user){
 
   if (error) {
     return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          خطأ في التحميل {error}
-        </p>
-      </div>
+      <Error404/>
     );
   }
 

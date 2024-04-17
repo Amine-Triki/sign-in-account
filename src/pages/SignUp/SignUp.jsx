@@ -2,13 +2,20 @@ import "./SignUp.css";
 import { Helmet } from "react-helmet-async";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { auth } from "../../firebase/config";
-import { createUserWithEmailAndPassword, updateProfile , sendEmailVerification} from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+  sendEmailVerification,
+} from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import { useNavigate } from "react-router-dom";
+
+import { Loading } from "../../components/index";
+import { Error404 } from "../index";
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -19,25 +26,22 @@ const SignUp = () => {
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
-    
-    if(user){
+    if (user) {
       if (user.emailVerified) {
         navigate("/");
       }
     }
-  } );
+  });
 
   if (loading) {
     return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          في طور التحميل
-        </p>
-      </div>
+      <main className="d-flex align-items-center justify-content-center ">
+        <Loading />
+      </main>
     );
   }
 
-  if(user){
+  if (user) {
     if (!user.emailVerified) {
       return (
         <div>
@@ -48,9 +52,6 @@ const SignUp = () => {
       );
     }
   }
-
-
-
 
   if (!user) {
     return (
@@ -110,11 +111,10 @@ const SignUp = () => {
                       const user = userCredential.user;
                       // ...
 
-                      sendEmailVerification(auth.currentUser)
-                        .then(() => {
-                          // Email verification sent!
-                          // ...
-                        });
+                      sendEmailVerification(auth.currentUser).then(() => {
+                        // Email verification sent!
+                        // ...
+                      });
 
                       updateProfile(auth.currentUser, {
                         displayName: name,
@@ -135,9 +135,9 @@ const SignUp = () => {
                       const errorMessage = error.message;
                       // ..
                     });
-                  }}
-                  variant="primary mt-3"
-                  type="submit"
+                }}
+                variant="primary mt-3"
+                type="submit"
               >
                 ارسل
               </Button>
@@ -147,15 +147,9 @@ const SignUp = () => {
       </main>
     );
   }
-  
+
   if (error) {
-    return (
-      <div>
-        <p className=" profile container sign d-flex  flex-column justify-content-center align-items-center flex-wrap">
-          خطأ في التحميل {error}
-        </p>
-      </div>
-    );
+    return <Error404 />;
   }
 };
 

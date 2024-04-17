@@ -1,0 +1,22 @@
+.pageLoading{
+height: 200px;
+width: 200px;
+border-radius: 50%;
+
+
+border-right: 5px solid red;
+
+border-top: 5px solid red;
+
+margin:200px;
+
+animation: mymove 1s infinite linear;
+
+}
+
+@keyframes mymove {
+0% {transform: rotate(0deg); }
+
+100% {transform: rotate(360deg);}
+
+}
